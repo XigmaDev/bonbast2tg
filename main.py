@@ -61,6 +61,8 @@ def format_data_for_telegram(data):
             buy_price = f"{values['buy']} دلار"
         
         formatted_lines.append(f"{flag} • {name_persian}: \n  - فروش: {sell_price} \n  - خرید: {buy_price}")
+    
+    formatted_message = "\n\n".join(formatted_lines)
 
     jalali_date = jdatetime.datetime.now().strftime("%Y/%m/%d")
     formatted_message = f"تاریخ: {jalali_date}\n\n{formatted_message}"
