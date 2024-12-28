@@ -57,13 +57,13 @@ def format_data_for_telegram(data):
             name_persian = currency_names_persian.get(key.lower(), key.upper())
             
             if key.lower() not in ['bitcoin', 'ounce']:
-                sell_price = f"{int(values['sell']):,} تومن"
-                buy_price = f"{int(values['buy']):,} تومن"
+                sell_price = f"{int(values['sell']):,} تومان"
+                buy_price = f"{int(values['buy']):,} تومان"
             else:
                 sell_price = f"{values['sell']} دلار"
                 buy_price = f"{values['buy']} دلار"
             
-            formatted_lines.append(f"{flag} *{name_persian}* \n _ خرید#: {buy_price} \n فروش#: {sell_price}_")
+            formatted_lines.append(f"{flag} *{name_persian}* \n _ #خرید: {buy_price} \n #فروش: {sell_price}_")
     
     formatted_message = "\n\n".join(formatted_lines)
 
