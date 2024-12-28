@@ -48,19 +48,22 @@ def format_data_for_telegram(data):
         # Add more currencies and their Persian names as needed
     }
     
+    currencies_to_send = ['usd', 'eur', 'gbp', 'chf', 'jpy', 'try', 'cny', 'rub', 'aed', 'emami1', 'azadi1g', 'azadi1', 'azadi12', 'azadi14', 'mithqal', 'gol18', 'ounce', 'bitcoin']
+    
     formatted_lines = []
     for key, values in data.items():
-        flag = currency_flags.get(key.lower(), '')
-        name_persian = currency_names_persian.get(key.lower(), key.upper())
-        
-        if key.lower() not in ['bitcoin', 'ounce']:
-            sell_price = f"{int(values['sell']):,} تومن"
-            buy_price = f"{int(values['buy']):,} تومن"
-        else:
-            sell_price = f"{values['sell']} دلار"
-            buy_price = f"{values['buy']} دلار"
-        
-        formatted_lines.append(f"{flag} • {name_persian}: \n  - فروش: {sell_price} \n  - خرید: {buy_price}")
+        if key.lower() in currencies_to_send:
+            flag = currency_flags.get(key.lower(), '')
+            name_persian = currency_names_persian.get(key.lower(), key.upper())
+            
+            if key.lower() not in ['bitcoin', 'ounce']:
+                sell_price = f"{int(values['sell']):,} تومن"
+                buy_price = f"{int(values['buy']):,} تومن"
+            else:
+                sell_price = f"{values['sell']} دلار"
+                buy_price = f"{values['buy']} دلار"
+            
+            formatted_lines.append(f"{flag} • {name_persian}: \n  - فروش: {sell_price} \n  - خرید: {buy_price}")
     
     formatted_message = "\n\n".join(formatted_lines)
 
@@ -70,7 +73,6 @@ def format_data_for_telegram(data):
     formatted_message += "\n\n@bonbast2tg"
     
     return formatted_message
-
 
 def send_to_telegram(message):
     telegram_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
