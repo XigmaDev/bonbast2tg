@@ -31,7 +31,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Execute Python Script
-        run: python script.py
+        run: python main.py
 
       - name: Configure Git
         run: |
