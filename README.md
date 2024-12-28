@@ -4,7 +4,7 @@ Bonbast2TG is a project that fetches exchange rates from Bonbast and sends updat
 
 ## Features
 
-- Fetches exchange rates from Bonbast
+- Fetches exchange rates from Bonbast with (https://github.com/SamadiPour/bonbast)
 - Sends updates to a specified Telegram channel
 - Configurable update intervals
 
