@@ -69,8 +69,9 @@ def format_data_for_telegram(data):
     jalali_date = jdatetime.datetime.now().strftime("%Y/%m/%d")
     formatted_message = f"تاریخ: {jalali_date}\n\n{formatted_message}"
     
+    # Add Telegram channel address at the end
     formatted_message += "\n\n@bonbast2tg"
-
+    
     return formatted_message
 
 
