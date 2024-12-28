@@ -49,7 +49,6 @@ def format_data_for_telegram(data):
     }
     
     formatted_lines = []
-    
     for key, values in data.items():
         flag = currency_flags.get(key.lower(), '')
         name_persian = currency_names_persian.get(key.lower(), key.upper())
