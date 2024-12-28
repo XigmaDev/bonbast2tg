@@ -48,7 +48,7 @@ def format_data_for_telegram(data):
         # Add more currencies and their Persian names as needed
     }
     
-    currencies_to_send = ['usd', 'eur', 'gbp', 'chf', 'jpy', 'try', 'cny', 'rub', 'aed', 'emami1', 'azadi1g', 'azadi1', 'azadi12', 'azadi14', 'mithqal', 'gol18', 'ounce', 'bitcoin']
+    currencies_to_send = ['usd', 'eur', 'gbp', 'chf', 'jpy', 'try', 'cny', 'rub', 'aed', 'emami1', 'azadi1g', 'azadi1', 'azadi1_2', 'azadi1_4', 'mithqal', 'gol18', 'ounce', 'bitcoin']
     
     formatted_lines = []
     for key, values in data.items():
@@ -63,7 +63,7 @@ def format_data_for_telegram(data):
                 sell_price = f"{values['sell']} دلار"
                 buy_price = f"{values['buy']} دلار"
             
-            formatted_lines.append(f"{flag} • {name_persian}: \n  - فروش: {sell_price} \n  - خرید: {buy_price}")
+            formatted_lines.append(f">{flag} {name_persian}:  فروش: {sell_price}  - خرید: {buy_price}")
     
     formatted_message = "\n\n".join(formatted_lines)
 
