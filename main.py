@@ -35,10 +35,23 @@ def format_data_for_telegram(data):
         # Add more currencies and their flags as needed
     }
     
+    currency_names_persian = {
+        'usd': 'دلار آمریکا', 'eur': 'یورو', 'gbp': 'پوند انگلیس', 'jpy': 'ین ژاپن', 'cny': 'یوان چین',
+        'aud': 'دلار استرالیا', 'cad': 'دلار کانادا', 'chf': 'فرانک سوئیس', 'sek': 'کرون سوئد', 'nzd': 'دلار نیوزیلند',
+        'nok': 'کرون نروژ', 'rub': 'روبل روسیه', 'thb': 'بات تایلند', 'sgd': 'دلار سنگاپور', 'hkd': 'دلار هنگ کنگ',
+        'azn': 'منات آذربایجان', 'amd': 'درام ارمنستان', 'dkk': 'کرون دانمارک', 'aed': 'درهم امارات', 'try': 'لیر ترکیه',
+        'sar': 'ریال عربستان', 'inr': 'روپیه هند', 'myr': 'رینگیت مالزی', 'afn': 'افغانی افغانستان', 'kwd': 'دینار کویت',
+        'iqd': 'دینار عراق', 'bhd': 'دینار بحرین', 'omr': 'ریال عمان', 'qar': 'ریال قطر', 'emami1': 'سکه امامی',
+        'azadi1g': 'سکه آزادی گرمی', 'azadi1': 'سکه آزادی', 'azadi12': 'سکه نیم آزادی', 'azadi14': 'سکه ربع آزادی',
+        'mithqal': 'مثقال طلا', 'gol18': 'طلای ۱۸ عیار', 'ounce': 'اونس طلا', 'bitcoin': 'بیت‌کوین'
+        # Add more currencies and their Persian names as needed
+    }
+    
     formatted_lines = []
     for key, values in data.items():
         flag = currency_flags.get(key.lower(), '')
-        formatted_lines.append(f"{flag} • {key.upper()}: \n  - Sell: {values['sell']} \n  - Buy: {values['buy']}")
+        name_persian = currency_names_persian.get(key.lower(), key.upper())
+        formatted_lines.append(f"{flag} • {name_persian}: \n  - فروش: {values['sell']} \n  - خرید: {values['buy']}")
     return "\n\n".join(formatted_lines)
 
 
