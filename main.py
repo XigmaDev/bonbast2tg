@@ -48,7 +48,8 @@ def format_data_for_telegram(data):
         # Add more currencies and their Persian names as needed
     }
     
-     formatted_lines = []
+    formatted_lines = []
+    
     for key, values in data.items():
         flag = currency_flags.get(key.lower(), '')
         name_persian = currency_names_persian.get(key.lower(), key.upper())
@@ -62,12 +63,9 @@ def format_data_for_telegram(data):
         
         formatted_lines.append(f"{flag} • {name_persian}: \n  - فروش: {sell_price} \n  - خرید: {buy_price}")
 
-    
-    # Add Jalali date at the beginning
     jalali_date = jdatetime.datetime.now().strftime("%Y/%m/%d")
     formatted_message = f"تاریخ: {jalali_date}\n\n{formatted_message}"
-    
-    # Add Telegram channel address at the end
+
     formatted_message += "\n\n@bonbast2tg"
     
     return formatted_message
