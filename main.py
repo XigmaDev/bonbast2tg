@@ -4,8 +4,8 @@ from bs4 import BeautifulSoup
 import os
 
 BONBAST_URL = os.getenv("BONBAST_URL", "https://www.bonbast.com")
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+TELEGRAM_BOT_TOKEN = os.getenv("BOT_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("CHAT_ID")
 
 def merge_and_extract_tables(tables_soup):
     tables = []
