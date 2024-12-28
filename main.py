@@ -23,10 +23,24 @@ def crawl_soup(url: str, post_data: dict) -> BeautifulSoup:
     return BeautifulSoup(html, 'html.parser')
 
 def format_data_for_telegram(data):
+    currency_flags = {
+        'usd': '🇺🇸', 'eur': '🇪🇺', 'gbp': '🇬🇧', 'jpy': '🇯🇵', 'cny': '🇨🇳',
+        'aud': '🇦🇺', 'cad': '🇨🇦', 'chf': '🇨🇭', 'sek': '🇸🇪', 'nzd': '🇳🇿',
+        'nok': '🇳🇴', 'rub': '🇷🇺', 'thb': '🇹🇭', 'sgd': '🇸🇬', 'hkd': '🇭🇰',
+        'azn': '🇦🇿', 'amd': '🇦🇲', 'dkk': '🇩🇰', 'aed': '🇦🇪', 'try': '🇹🇷',
+        'sar': '🇸🇦', 'inr': '🇮🇳', 'myr': '🇲🇾', 'afn': '🇦🇫', 'kwd': '🇰🇼',
+        'iqd': '🇮🇶', 'bhd': '🇧🇭', 'omr': '🇴🇲', 'qar': '🇶🇦', 'emami1': '🏅',
+        'azadi1g': '🏅', 'azadi1': '🏅', 'azadi12': '🏅', 'azadi14': '🏅',
+        'mithqal': '🏅', 'gol18': '🏅', 'ounce': '🏅', 'bitcoin': '₿'
+        # Add more currencies and their flags as needed
+    }
+    
     formatted_lines = []
     for key, values in data.items():
-        formatted_lines.append(f"• {key.upper()}: \n  - Sell: {values['sell']} \n  - Buy: {values['buy']}")
+        flag = currency_flags.get(key.lower(), '')
+        formatted_lines.append(f"{flag} • {key.upper()}: \n  - Sell: {values['sell']} \n  - Buy: {values['buy']}")
     return "\n\n".join(formatted_lines)
+
 
 def send_to_telegram(message):
     telegram_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
