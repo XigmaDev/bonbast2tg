@@ -2,6 +2,7 @@ import httpx
 from bonbast.server import get_prices_from_api, get_token_from_main_page
 from bs4 import BeautifulSoup
 import os
+import jdatetime
 
 BONBAST_URL = os.getenv("BONBAST_URL", "https://www.bonbast.com")
 TELEGRAM_BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -61,7 +62,15 @@ def format_data_for_telegram(data):
         
         formatted_lines.append(f"{flag} • {name_persian}: \n  - فروش: {sell_price} \n  - خرید: {buy_price}")
     
-    return "\n\n".join(formatted_lines)
+    formatted_message = "\n\n".join(formatted_lines)
+    formatted_message += "\n\nتمامی قیمت‌ها به تومان می باشد"
+    
+    # Add Jalali date at the beginning
+    jalali_date = jdatetime.datetime.now().strftime("%Y/%m/%d")
+    formatted_message = f"تاریخ: {jalali_date}\n\n{formatted_message}"
+    
+    return formatted_message
+
 
 def send_to_telegram(message):
     telegram_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
