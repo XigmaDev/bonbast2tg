@@ -63,7 +63,7 @@ def format_data_for_telegram(data):
                 sell_price = f"{values['sell']} دلار"
                 buy_price = f"{values['buy']} دلار"
             
-            formatted_lines.append(f"{flag} *{name_persian}* \n _ خرید:# {buy_price} \n فروش:# {sell_price}_")
+            formatted_lines.append(f"{flag} *{name_persian}* \n _ خرید#: {buy_price} \n فروش#: {sell_price}_")
     
     formatted_message = "\n\n".join(formatted_lines)
 
