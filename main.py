@@ -48,22 +48,20 @@ def format_data_for_telegram(data):
         # Add more currencies and their Persian names as needed
     }
     
-    formatted_lines = []
+     formatted_lines = []
     for key, values in data.items():
         flag = currency_flags.get(key.lower(), '')
         name_persian = currency_names_persian.get(key.lower(), key.upper())
         
         if key.lower() not in ['bitcoin', 'ounce']:
-            sell_price = f"{int(values['sell']):,}"
-            buy_price = f"{int(values['buy']):,}"
+            sell_price = f"{int(values['sell']):,} تومن"
+            buy_price = f"{int(values['buy']):,} تومن"
         else:
-            sell_price = values['sell']
-            buy_price = values['buy']
+            sell_price = f"{values['sell']} دلار"
+            buy_price = f"{values['buy']} دلار"
         
         formatted_lines.append(f"{flag} • {name_persian}: \n  - فروش: {sell_price} \n  - خرید: {buy_price}")
-    
-    formatted_message = "\n\n".join(formatted_lines)
-    formatted_message += "\n\nتمامی قیمت‌ها به تومان می باشد"
+
     
     # Add Jalali date at the beginning
     jalali_date = jdatetime.datetime.now().strftime("%Y/%m/%d")
