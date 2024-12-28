@@ -51,14 +51,23 @@ def format_data_for_telegram(data):
     for key, values in data.items():
         flag = currency_flags.get(key.lower(), '')
         name_persian = currency_names_persian.get(key.lower(), key.upper())
-        formatted_lines.append(f"{flag} • {name_persian}: \n  - فروش: {values['sell']} \n  - خرید: {values['buy']}")
+        
+        if key.lower() not in ['bitcoin', 'ounce']:
+            sell_price = f"{int(values['sell']):,}"
+            buy_price = f"{int(values['buy']):,}"
+        else:
+            sell_price = values['sell']
+            buy_price = values['buy']
+        
+        formatted_lines.append(f"{flag} • {name_persian}: \n  - فروش: {sell_price} \n  - خرید: {buy_price}")
+    
     return "\n\n".join(formatted_lines)
-
 
 def send_to_telegram(message):
     telegram_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-    payload = {"chat_id": TELEGRAM_CHAT_ID, "text": message, "parse_mode": "Markdown"}
+    payload = {"chat_id": TELEGRAM_CHAT_ID, "text": f"\u200F{message}", "parse_mode": "Markdown"}
     response = httpx.post(telegram_url, json=payload)
+    
     if response.status_code != 200:
         raise Exception(f"Failed to send message to Telegram: {response.text}")
 
