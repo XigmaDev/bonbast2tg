@@ -51,11 +51,9 @@ if __name__ == "__main__":
         current_date = jdatetime.datetime.now().strftime("%Y/%m/%d")
         message = (
             f"*\u062a\u0627\u0631\u06cc\u062e:* {current_date}\n\n"
-            f"\ud83c\uddfa\ud83c\uddf8 *\u062f\u0644\u0627\u0631 \u0622\u0645\u0631\u06cc\u06a9\u0627*
-"
+            f"\ud83c\uddfa\ud83c\uddf8 *\u062f\u0644\u0627\u0631 \u0622\u0645\u0631\u06cc\u06a9\u0627*"
             f"  #\u0642\u06cc\u0645\u062a: `{dollar_price}`\n\n\n"
-            f"\ud83c\udf1f *\u0637\u0644\u0627\u06cc 18 \u0639\u06cc\u0627\u0631*
-"
+            f"\ud83c\udf1f *\u0637\u0644\u0627\u06cc 18 \u0639\u06cc\u0627\u0631*"
             f"  #\u0642\u06cc\u0645\u062a: `{geram18_price}`\n\n"
             f"@bonbast2tg"
         )
