@@ -12,7 +12,7 @@ def fetch_prices():
 
         dollar_price_element = soup.find(id="l-price_dollar_rl")
         geram18_price_element = soup.find(id="l-geram18")
-        
+
         dollar_price_element_info = dollar_price_element.find(class_="info-price") if dollar_price_element else None
         dollar_price = dollar_price_element_info.text.strip() if dollar_price_element_info else "Geram18 price element not found."
 
@@ -52,9 +52,10 @@ if __name__ == "__main__":
         message = (
             f"*\u062a\u0627\u0631\u06cc\u062e:* {current_date}\n\n"
             f"\ud83c\uddfa\ud83c\uddf8 *\u062f\u0644\u0627\u0631 \u0622\u0645\u0631\u06cc\u06a9\u0627*\n"
-            f"  #\u0642\u06cc\u0645\u062a: `{dollar_price}`\n"
+            f"  #\u0642\u06cc\u0645\u062a: `{dollar_price}`\n\n\n"
             f"\ud83c\udf1f *\u06af\u0631\u0645 \u0637\u0644\u0627\u06cc 18*\n"
-            f"  #\u0642\u06cc\u0645\u062a: `{geram18_price}`"
+            f"  #\u0642\u06cc\u0645\u062a: `{geram18_price}`\n\n"
+            f"@bonbast2tg"
         )
         result = send_to_telegram(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, message)
         print(result)
