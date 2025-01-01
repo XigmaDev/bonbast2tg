@@ -11,10 +11,10 @@ def fetch_prices():
         soup = BeautifulSoup(response.text, 'html.parser')
 
         dollar_price_element = soup.find(id="l-price_dollar_rl")
-        geram18_price_element = soup.find(id="l-price_geram18")
+        geram18_price_element = soup.find(id="l-geram18")
 
-        dollar_price = dollar_price_element.text.strip() if dollar_price_element else "Dollar price element not found."
-        geram18_price = geram18_price_element.text.strip() if geram18_price_element else "Geram18 price element not found."
+        dollar_price = dollar_price_element.text.split("\n")[0].strip() if dollar_price_element else "Dollar price not found."
+        geram18_price = geram18_price_element.text.split("\n")[0].strip() if geram18_price_element else "Geram18 price not found."
 
         return dollar_price, geram18_price
 
