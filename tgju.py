@@ -12,9 +12,12 @@ def fetch_prices():
 
         dollar_price_element = soup.find(id="l-price_dollar_rl")
         geram18_price_element = soup.find(id="l-geram18")
+        
+        dollar_price_element_info = dollar_price_element.find(class_="info-price") if dollar_price_element else None
+        dollar_price = dollar_price_element_info.text.strip() if dollar_price_element_info else "Geram18 price element not found."
 
-        dollar_price = dollar_price_element.text.split("\n")[0].strip() if dollar_price_element else "Dollar price not found."
-        geram18_price = geram18_price_element.text.split("\n")[0].strip() if geram18_price_element else "Geram18 price not found."
+        geram18_price_element_info = geram18_price_element.find(class_="info-price") if geram18_price_element else None
+        geram18_price = geram18_price_element_info.text.strip() if geram18_price_element_info else "Geram18 price element not found."
 
         return dollar_price, geram18_price
 
@@ -38,9 +41,11 @@ def send_to_telegram(bot_token, chat_id, message):
 if __name__ == "__main__":
     TELEGRAM_BOT_TOKEN = os.getenv("BOT_TOKEN")
     TELEGRAM_CHAT_ID = os.getenv("CHAT_ID")
-
-
+    
     dollar_price, geram18_price = fetch_prices()
+
+    print(f"Fetched Dollar Price: {dollar_price}")
+    print(f"Fetched Geram18 Price: {geram18_price}")
 
     if geram18_price:
         current_date = jdatetime.datetime.now().strftime("%Y/%m/%d")
