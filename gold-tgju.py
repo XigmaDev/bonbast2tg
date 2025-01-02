@@ -70,7 +70,7 @@ def format_message(market_data):
                 icon = "💰"
                 title = slug
 
-            message += f"{icon} **{title}**  #قیمت: _{data['Current Price']}_\n"
+            message += f"{icon} **{data['Title']}**  #قیمت: _{data['Current Price']}_\n"
             message+=f"\n@bonbast2tg"
         return message
 
