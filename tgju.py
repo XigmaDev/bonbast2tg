@@ -3,8 +3,8 @@ from bs4 import BeautifulSoup
 import jdatetime
 import os
 
-url = "https://www.tgju.org/gold-chart"
-nameslugs = ["geram18", "geram24","gold_17_transfer", "silver_999"]
+url = "https://www.tgju.org/"
+nameslugs = ["geram18", "geram24","gold_17_transfer","sekeb","sekeb_blubber", "silver_999","price_dollar_rl","price_eur","price_aed"]
 market_data = {}
 TELEGRAM_BOT_TOKEN = os.getenv("BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("CHAT_ID")
