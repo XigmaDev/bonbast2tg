@@ -4,11 +4,10 @@ import jdatetime
 import os
 
 url = "https://www.tgju.org/gold-chart"
-nameslugs = ["geram18", "geram24", "silver_999", "gold_17_transfer"]
+nameslugs = ["geram18", "geram24","gold_17_transfer", "silver_999"]
 market_data = {}
 TELEGRAM_BOT_TOKEN = os.getenv("BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("CHAT_ID")
-
 
 def fetch_market_data():
     try:
@@ -59,14 +58,11 @@ def format_message(market_data):
 
         for slug, data in market_data.items():
             if slug == "geram18":
-                icon = "🌟"
-                title = "طلای 18 عیار"
+                icon = "🥇"
             elif slug == "geram24":
-                icon = "🌟"
-                title = "طلای 24 عیار"
+                icon = "🥇"
             elif slug == "gold_17_transfer":
-                icon = "🌟"
-                title = "حباب آبشده"
+                icon = "🥇"
             elif slug == "silver_999":
                 icon = "🥈"
                 title = "نقره 999"
@@ -74,8 +70,8 @@ def format_message(market_data):
                 icon = "💰"
                 title = slug
 
-            message += f"{icon} {title}  #قیمت: {data['Current Price']}\n"
-
+            message += f"{icon} **{title}**  #قیمت: _{data['Current Price']}_\n"
+            message+=f"\n@bonbast2tg"
         return message
 
     except Exception as e:
