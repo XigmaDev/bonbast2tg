@@ -65,13 +65,10 @@ def format_message(market_data):
                 icon = "🥇"
             elif slug == "silver_999":
                 icon = "🥈"
-                title = "نقره 999"
             else:
                 icon = "💰"
-                title = slug
-
             message += f"{icon} **{data['Title']}**  #قیمت: _{data['Current Price']}_\n"
-            message+=f"\n@bonbast2tg"
+        message+=f"\n@bonbast2tg"
         return message
 
     except Exception as e:
