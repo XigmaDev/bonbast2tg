@@ -10,8 +10,11 @@ TELEGRAM_BOT_TOKEN = os.getenv("BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("CHAT_ID")
 
 def fetch_market_data():
+    headers = {
+        'Cache-Control': 'no-cache'
+    }
     try:
-        response = requests.get(url)
+        response = requests.get(url,headers=headers)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
 
@@ -57,17 +60,11 @@ def format_message(market_data):
         message = f"تاریخ: {current_date}\n\n"
 
         for slug, data in market_data.items():
-            if slug == "geram18":
-                icon = "🥇"
-            elif slug == "geram24":
-                icon = "🥇"
-            elif slug == "gold_17_transfer":
-                icon = "🥇"
-            elif slug == "silver_999":
-                icon = "🥈"
+            if slug == "sekeb_blubber":
+                icon = "🔸"
             else:
-                icon = "💰"
-            message += f"{icon} **{data['Title']}**  #قیمت: _{data['Current Price']}_\n"
+                icon = "🔹"
+            message += f"{icon} **{data['Title']}**  #قیمت: _{data['Current Price']}_\n\n"
         message+=f"\n@bonbast2tg"
         return message
 
