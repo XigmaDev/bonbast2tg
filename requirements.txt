@@ -3,4 +3,3 @@ beautifulsoup4
 bonbast
 jdatetime
 requests
-locale

@@ -1,8 +1,8 @@
+import locale
 import requests
 from bs4 import BeautifulSoup
 import jdatetime
 import os
-import locale
 
 url = "https://www.tgju.org/"
 nameslugs = ["geram18", "geram24","gold_17_transfer","sekeb","sekeb_blubber","nim","nim_blubber","rob","rob_blubber", "silver_999","price_dollar_rl","price_eur","price_aed"]
