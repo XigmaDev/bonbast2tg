@@ -4,7 +4,7 @@ import jdatetime
 import os
 
 url = "https://www.tgju.org/"
-nameslugs = ["geram18", "geram24","gold_17_transfer","sekeb","sekeb_blubber", "silver_999","price_dollar_rl","price_eur","price_aed"]
+nameslugs = ["geram18", "geram24","gold_17_transfer","sekeb","sekeb_blubber","nim","nim_blubber","rob","rob_blubber", "silver_999","price_dollar_rl","price_eur","price_aed"]
 market_data = {}
 TELEGRAM_BOT_TOKEN = os.getenv("BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("CHAT_ID")
@@ -65,10 +65,14 @@ def format_message(market_data):
                 icon = "🔸"
             elif slug == "gold_17_transfer":
                 icon = "🔸"
+            elif slug == "nim_blubber":
+                icon = "🔸"
+            elif slug == "rob_blubber":
+                icon = "🔸"
             else:
                 icon = "🔹"
             
-            message += f"{icon} **{data['Title']}**  #قیمت: _{data['Current Price']}_\n\n"
+            message += f"{icon} **{data['Title']}**  #قیمت: _{data['Current Price']}_\n"
         message+=f"\n🛑 تمامی قیمت ها به ریال می باشد ."
         message+=f"\n@bonbast2tg"
         return message
