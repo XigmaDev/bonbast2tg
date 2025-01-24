@@ -1,4 +1,3 @@
-import locale
 import requests
 from bs4 import BeautifulSoup
 import jdatetime
@@ -58,8 +57,7 @@ def send_to_telegram(bot_token, chat_id, message):
 
 def format_message(market_data):
     try:
-        locale.setlocale(locale.LC_ALL, jdatetime.FA_LOCALE)
-        current_date = jdatetime.datetime.now().strftime("%A %d %B %Y")
+        current_date = jdatetime.datetime.now().strftime("%Y/%m/%d")
         message = f"تاریخ: {current_date}\n\n"
 
         for slug, data in market_data.items():
