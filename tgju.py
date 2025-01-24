@@ -57,7 +57,7 @@ def send_to_telegram(bot_token, chat_id, message):
 
 def format_message(market_data):
     try:
-        current_date = jdatetime.datetime.now().strftime("%Y/%m/%d")
+        current_date = jdatetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S")
         message = f"تاریخ: {current_date}\n\n"
 
         for slug, data in market_data.items():
