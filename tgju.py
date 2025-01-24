@@ -63,9 +63,12 @@ def format_message(market_data):
         for slug, data in market_data.items():
             if slug == "sekeb_blubber":
                 icon = "🔸"
+            if slug == "gold_17_transfer":
+                icon = "🔸"
             else:
                 icon = "🔹"
             message += f"{icon} **{data['Title']}**  #قیمت: _{data['Current Price']}_\n\n"
+        message+=f"\n🛑 تمامی قیمت ها به ریال می باشد ."
         message+=f"\n@bonbast2tg"
         return message
 
