@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import jdatetime
 import os
+import locale
 
 url = "https://www.tgju.org/"
 nameslugs = ["geram18", "geram24","gold_17_transfer","sekeb","sekeb_blubber","nim","nim_blubber","rob","rob_blubber", "silver_999","price_dollar_rl","price_eur","price_aed"]
@@ -57,6 +58,7 @@ def send_to_telegram(bot_token, chat_id, message):
 
 def format_message(market_data):
     try:
+        locale.setlocale(locale.LC_ALL, jdatetime.FA_LOCALE)
         current_date = jdatetime.datetime.now().strftime("%A %d %B %Y")
         message = f"تاریخ: {current_date}\n\n"
 
