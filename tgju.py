@@ -11,6 +11,7 @@ TELEGRAM_CHAT_ID = os.getenv("CHAT_ID")
 
 def fetch_market_data():
     headers = {
+        'Pragma': 'no-cache',
         'Cache-Control': 'no-cache'
     }
     try:
