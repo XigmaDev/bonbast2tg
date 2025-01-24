@@ -72,8 +72,7 @@ def format_message(market_data):
             else:
                 icon = "🔹"
             
-            message += f"{icon} **{data['Title']}**  #قیمت: _{data['Current Price']}_\n"
-        message+=f"\n🛑 تمامی قیمت ها به ریال می باشد ."
+            message += f"{icon} **{data['Title']}** : _{data['Current Price']} ریال_\n"
         message+=f"\n@bonbast2tg"
         return message
 
