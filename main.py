@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import os
 import jdatetime
 
-BONBAST_URL = os.getenv("BONBAST_URL", "https://www.bonbast.com")
+BONBAST_URL = os.getenv("BONBAST_URL", "https://www.bon-bast.com")
 TELEGRAM_BOT_TOKEN = os.getenv("BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("CHAT_ID")
 
